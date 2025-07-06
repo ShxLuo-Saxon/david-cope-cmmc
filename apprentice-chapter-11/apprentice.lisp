@@ -457,8 +457,21 @@ if enough readers of CMMC express an interest, I will place such a program on th
                  do (add-word-to-word-weightlists item))))
 
 ;;;;;
-#| Calling (parse-sentence (what is your name?) sentence-2) 
-     parse-sentence returned (a a a a)|#
+#| Examples of PARSE-SENTENCE function usage:
+
+   Input: sentence = (what is your name?) , name = sentence-1
+   Effect: Sets (parse-it sentence-1) to a list of SPEAC symbols like (S C E S)
+   
+   Input: sentence = (my name is david!) , name = sentence-2  
+   Effect: Sets (parse-it sentence-2) to a list of SPEAC symbols like (C S C E)
+   
+   Input: sentence = (hello there) , name = sentence-3
+   Effect: Sets (parse-it sentence-3) to a list of SPEAC symbols like (S C)
+   
+   The function parses each word in the sentence using figure-speac, which returns
+   SPEAC symbols (S=statement, P=preparation, E=extension, A=antecedent, C=consequent)
+   based on word frequency in the current context. The resulting symbols are stored
+   in the parse-it slot of the named sentence object. |#
 ;;;;;
 
 (defun PARSE-SENTENCE (sentence name)
